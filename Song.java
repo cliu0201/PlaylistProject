@@ -1,7 +1,7 @@
 /**
  * File for a Song class to be used in the Playlist Project
- * @author
- * @version
+ * @author Cici Liu, Hera Yuan
+ * @version 
  */
 public class Song {
 
@@ -9,6 +9,7 @@ public class Song {
     private String title;
     private String artist;
     private double duration;
+    private boolean liked;
 
     /**
      * Constructor-- what information needs to be given to make a Song?
@@ -19,7 +20,7 @@ public class Song {
         title = t;
         artist = a;
         duration = d;
-
+        liked = false;
     }
 
      /**
@@ -29,7 +30,7 @@ public class Song {
       * song easily as well!
       * What kind of mutator (setter) methods will you need?
       */
-     public String getName()
+     public String getTitle()
      {
         return title;
      }
@@ -39,11 +40,44 @@ public class Song {
         return artist;
      }
 
-     public Double getDuration()
+     public double getDuration()
      {
         return duration;
      }
 
+     public Boolean setLiked()
+     {
+        return liked;
+     }
+
+     public void like()
+     {
+        liked = true;
+     }
+
+    public String toString()
+    {
+            int totalSeconds = (int) Math.round(duration * 60);
+            int minutes = totalSeconds / 60;
+            int seconds = totalSeconds % 60;
+
+            String time;
+            if (seconds < 10) 
+            {
+                time = minutes + ":0" + seconds;
+            } 
+            else 
+            {
+                time = minutes + ":" + seconds;
+            }
+
+            String sentence = "“" + title + "” by " + artist + " (" + time + ")";
+            if (liked) {
+                sentence += " -- liked";
+            }
+
+            return sentence;
+        }
      
     
 
